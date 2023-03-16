@@ -2,18 +2,17 @@ const express = require("express");
 const router = express.Router();
 const usuarioController = require("../controller/usuario.controller");
 
+router.get('/findById/:id', usuarioController.findUserByIdController);
+router.get('/findAll', usuarioController.findAllUsersController);
 
-router.get('/findById/:id');
-router.get('/findAll');
+router.post('/create', usuarioController.createUserController);
+router.post('/addAdress/:id', usuarioController.addAdressUserController);
+router.post('/addPedido/:id', usuarioController.addPedidoUserController);
 
-router.post('/create');
-router.post('/addAdress/:id');
-router.post('/addPedido/:id');
+router.put('/update/:id', usuarioController.updateUserController);
 
-router.put('/update/:id');
-
-router.delete('/remove/:id');
-router.delete('/removeAdress');
-router.delete('/removePedido');
+router.delete('/remove/:id', usuarioController.deleteUserController);
+router.delete('/removeAdress', usuarioController.removeAdressUserController);
+router.delete('/removePedido', usuarioController.removePedidoUserController);
 
 module.exports = router;
