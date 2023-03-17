@@ -9,10 +9,9 @@ const UsuarioSchema = new mongoose.Schema({
             rua: {type: String, required: true},
             numero: {type: String, required: true},
             complemento: {type: String, required: false},
-            createAt: {type: Date, required: true}
+            createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
-    imagem: {type: String},
     pedido: [
         {
 
@@ -20,7 +19,7 @@ const UsuarioSchema = new mongoose.Schema({
             bebida: {type: String},
         }
     ],
-    createAt: {type: Date, required: true},
+    createAt: {type: Date, required: true, default: Date.now()},
     admin: {type: Boolean, require: true, defaul: false}
 });
 

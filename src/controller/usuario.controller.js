@@ -38,12 +38,12 @@ const createUserController = async (req, res) => {
         if(!body.numero){
             return res.status(400).send({message: "Campo numero precisa ser preenchido"})
         }
-        if(!body.endereco){
-            return res.status(400).send({message: "Campo endereco precisa ser preenchido"})
-        }
-        if(!body.pedido){
-            return res.status(400).send({message: "Campo pedido precisa ser preenchido"})
-        }
+        // if(!body.endereco){
+        //     return res.status(400).send({message: "Campo endereco precisa ser preenchido"})
+        // }
+        // if(!body.pedido){
+        //     return res.status(400).send({message: "Campo pedido precisa ser preenchido"})
+        // }
 
         return res.status(201).send(await userService.createUserService(body)); 
 
@@ -65,11 +65,12 @@ const updateUserController = async (req, res) => {
 const removeUserController = async (req, res) => {
     try{
         const deletedUser = await userService.removeUserService(req.params.id);
-        if(deletedUser.deletedCount > 0){
-            return res.status(200).send({message: "Usuário Deletado"});
-        }else{
-            return res.status(404).send({message: "Usuário não encontrado"});
-        }
+        return res.status(200).send({message: "Usuário Deletado"});
+        // if(deletedUser.deletedCount > 0){
+        //     return res.status(200).send({message: "Usuário Deletado"});
+        // }else{
+        //     return res.status(404).send({message: "Usuário não encontrado"});
+        // }
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
