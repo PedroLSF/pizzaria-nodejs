@@ -12,13 +12,13 @@ const UsuarioSchema = new mongoose.Schema({
             createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
-    pedido: [
-        {
+    // pedido: [
+    //     {
 
-            pizzas: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
-            bebida: {type: String},
-        }
-    ],
+    //         pizzas: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
+    //         bebida: {type: String},
+    //     }
+    // ],
     createAt: {type: Date, required: true, default: Date.now()},
     admin: {type: Boolean, require: true, defaul: false}
 });
