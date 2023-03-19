@@ -8,6 +8,8 @@ const findUserByIdController = async (req, res) => {
             return res.status(404).send({message: "Usuario não encontrado"});
         }
 
+        return res.status(200).send(user);
+
 
     }catch(err){
 
@@ -79,7 +81,14 @@ const removeUserController = async (req, res) => {
 
 const addAdressUserController = async (req, res) => {
     try{
+        req.body.createdAt = new Date();
+        const endereco = await userService.addAdressService(req.params.id, req.body);
 
+        if(endereco.ok = 1){
+            return res.status(200).send({message: "Endereco Adicionado!"});
+        }else{
+            return res.status(400).send({message: "Erro no Endereco, tente novamente"});
+        }
 
 
 
@@ -91,7 +100,13 @@ const addAdressUserController = async (req, res) => {
 
 const removeAdressUserController = async (req, res) => {
     try{
+        const endereco = await userService.removeAdressService(req.body.id, req.body.adressId);
 
+        if(endereco.ok = 1){
+            return res.status(200).send({message: "Endereco Removido!"});
+        }else{
+            return res.status(400).send({message: "Erro na remocao Endereco, tente novamente"});
+        }
 
 
 

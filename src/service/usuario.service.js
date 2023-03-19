@@ -21,11 +21,37 @@ const removeUserService = (id) => {
 }
 
 const addAdressService = (id, endereco) => {
-    
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push:{
+                endereco: endereco,
+            },
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
-const removeAdressService = (id) => {
-    
+const removeAdressService = (id, adressId) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull:{
+                endereco: {
+                    _id: adressId,
+                },
+            },
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
 const addPedidoService = (id, pedido) => {
