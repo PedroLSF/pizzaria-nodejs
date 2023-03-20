@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const connectToDatabase = require("./src/database/database"); // Conexão com o Banco
 const usuario = require('./src/router/usuario.router'); // Arquivo de Rota do Usuário 
 const auth = require('./src/router/auth.router'); // Arquivo de Rota de Auth 
