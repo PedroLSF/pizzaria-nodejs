@@ -126,9 +126,6 @@ const removeAdressUserController = async (req, res) => {
 const addPedidoUserController = async (req, res) => {
     try{
 
-
-
-
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
@@ -137,9 +134,6 @@ const addPedidoUserController = async (req, res) => {
 
 const removePedidoUserController = async (req, res) => {
     try{
-
-
-
 
     }catch(err){
         console.log(`Erro: ${err.message}`);

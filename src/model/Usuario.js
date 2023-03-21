@@ -15,13 +15,16 @@ const UsuarioSchema = new mongoose.Schema({
             createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
-    // pedido: [
-    //     {
-
-    //         pizzas: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
-    //         bebida: {type: String},
-    //     }
-    // ],
+    pedido: [
+        {   
+            _id: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
+            pizzas: {type: String, required: true},
+            imagem: {type: String, required: true},
+            bebida: {type: String, required: true},
+            valor: {type: Number, required: true},
+            createAt: {type: Date, required: true, default: Date.now()}
+        }
+    ],
     createAt: {type: Date, required: true, default: Date.now()},
     admin: {type: Boolean, require: true, defaul: false}
 });

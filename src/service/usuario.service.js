@@ -1,4 +1,5 @@
 const Usuario = require('../model/Usuario');
+const Pedido = require('../model/Pedido');
 
 const findUserByIdService = (id) => {
     return Usuario.findById(id);
@@ -54,11 +55,11 @@ const removeAdressService = (id, adressId) => {
     );
 }
 
-const addPedidoService = (id, pedido) => {
+const addPedidoUserService = (id, pedido) => {
     
 }
 
-const removePedidoService = (pedido) => {
+const removePedidoUserService = (pedido) => {
     
 }
 
@@ -70,6 +71,6 @@ module.exports = {
     removeUserService,
     addAdressService,
     removeAdressService,
-    addPedidoService,
-    removePedidoService
+    addPedidoUserService,
+    removePedidoUserService
 };
