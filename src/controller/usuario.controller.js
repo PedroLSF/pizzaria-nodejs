@@ -125,7 +125,7 @@ const removeAdressUserController = async (req, res) => {
 
 const addPedidoUserController = async (req, res) => {
     try{
-
+        res.status(201).send(await userService.addPedidoUserService(req.params.id, req.body));
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
@@ -134,7 +134,7 @@ const addPedidoUserController = async (req, res) => {
 
 const removePedidoUserController = async (req, res) => {
     try{
-
+        res.status(200).send(await userService.removePedidoUserService(req.params.id, req.body));
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});

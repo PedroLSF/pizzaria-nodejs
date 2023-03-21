@@ -56,11 +56,39 @@ const removeAdressService = (id, adressId) => {
 }
 
 const addPedidoUserService = (id, pedido) => {
-    
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push:{
+                pedido:{
+                    _id: pedido._id,
+                },
+            },
+        },
+        {
+            rawResult: true,
+        },
+    );
 }
 
-const removePedidoUserService = (pedido) => {
-    
+const removePedidoUserService = (id, pedido) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull:{
+                pedido:{
+                    _id: pedido._id,
+                },
+            },
+        },
+        {
+            rawResult: true,
+        },
+    );
 }
 
 module.exports = {

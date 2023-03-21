@@ -20,6 +20,6 @@ router.put('/update/:id', usuarioController.updateUserController);
 // Rotas DELETE
 router.delete('/remove/:id', usuarioController.removeUserController);
 router.delete('/removeAdress', usuarioController.removeAdressUserController);
-router.delete('/removePedido', usuarioController.removePedidoUserController);
+router.delete('/removePedido/:id', usuarioController.removePedidoUserController);
 
 module.exports = router;

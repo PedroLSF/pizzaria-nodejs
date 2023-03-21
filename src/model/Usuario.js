@@ -18,10 +18,6 @@ const UsuarioSchema = new mongoose.Schema({
     pedido: [
         {   
             _id: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
-            pizzas: {type: String, required: true},
-            imagem: {type: String, required: true},
-            bebida: {type: String, required: true},
-            valor: {type: Number, required: true},
             createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
