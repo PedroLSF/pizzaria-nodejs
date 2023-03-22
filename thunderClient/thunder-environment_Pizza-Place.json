@@ -1,0 +1,20 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "Pizza-Place",
+    "dateExported": "2023-03-22T21:27:28.909Z",
+    "version": "1.0",
+    "variables": [
+        {
+            "name": "BaseUrl",
+            "value": "http://localhost:"
+        },
+        {
+            "name": "Port",
+            "value": "8080"
+        },
+        {
+            "name": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MThmM2NjYjIyNjhjYzYxZDljNWRlOCIsImlhdCI6MTY3OTQ1NTU0OSwiZXhwIjoxNjc5NDY0MTg5fQ.k2Xe5t3eX7zF6BhT6TCRNua3GlBcamJcqsRqM0wgsjk"
+        }
+    ]
+}

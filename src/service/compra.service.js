@@ -17,7 +17,7 @@ const deleteCompraService = (id) => {
 };
 
 const updateStatusCompraService = (id) => {
-
+    return Compra.findOneAndUpdate({_id: id}, {$set: {concluido: true}});
 };
 
 module.exports = {

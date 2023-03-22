@@ -40,9 +40,19 @@ const deleteCompraController = async (req, res) => {
     }
 };
 
+const updateStatusCompraController = async (req, res) => {
+    try{
+        res.status(200).send(await compraService.updateStatusCompraService(req.params.id));
+    }catch(err){
+        console.log(`Erro: ${err.message}`);
+        return res.status(500).send({message: "Erro inesperado, tente novamente"});
+    }
+};
+
 module.exports = {
     findCompraByIdController,
     findAllCompraController,
     createCompraController,
-    deleteCompraController
+    deleteCompraController,
+    updateStatusCompraController
 }

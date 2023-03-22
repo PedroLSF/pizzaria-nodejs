@@ -10,4 +10,6 @@ router.post("/create", authMiddleware, compraController.createCompraController);
 
 router.delete("/delete/:id", authMiddleware, compraController.deleteCompraController);
 
+router.patch("/updateStatus/:id", authMiddleware, compraController.updateStatusCompraController);
+
 module.exports = router;
