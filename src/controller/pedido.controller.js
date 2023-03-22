@@ -3,7 +3,7 @@ const pedidoService = require("../service/pedido.service");
 const findPedidoByIdController = async (req, res) =>{
     try{
         res.send(await pedidoService.findPedidoByIdService(req.params.id));
-    }catch{
+    }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
     }
@@ -12,7 +12,7 @@ const findPedidoByIdController = async (req, res) =>{
 const findAllPedidoController = async (req, res) =>{
     try{
         res.send(await pedidoService.findAllPedidoService());
-    }catch{
+    }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
     }
@@ -23,10 +23,9 @@ const createPedidoController = async (req, res) =>{
         corpo = {
             ...req.body,
             userId: req.userId,
-            createdAt: new Date(),
         }
         res.send(await pedidoService.createPedidoService(corpo));
-    }catch{
+    }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
     }
@@ -35,7 +34,7 @@ const createPedidoController = async (req, res) =>{
 const updatePedidoController = async (req, res) =>{
     try{
         res.send(await pedidoService.updatePedidoService(req.params.id, req.body));
-    }catch{
+    }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
     }
@@ -44,7 +43,7 @@ const updatePedidoController = async (req, res) =>{
 const deletePedidoController = async (req, res) =>{
     try{
         res.send(await pedidoService.deletePedidoService(req.params.id));
-    }catch{
+    }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
     }

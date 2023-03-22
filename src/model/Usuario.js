@@ -17,7 +17,7 @@ const UsuarioSchema = new mongoose.Schema({
     ],
     pedido: [
         {   
-            _id: {type: mongoose.Schema.Types.ObjectId, required: true, uniue: true, ref: "pedidos"},
+            _id: {type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "pedidos"},
             createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
