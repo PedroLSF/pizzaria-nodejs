@@ -30,23 +30,18 @@ Estamos utilizando Endpoints para realizar diversas atividades dentro da nossa A
 
 Trecho do codigo do controller findByID:
 
-````
-javascript
+````javascript
 const findUserByIdController = async (req, res) => {
     try{
         const user = await userService.findUserByIdService(req.params.id);
-
         if(!user){
             return res.status(404).send({message: "Usuario nao encontrado, tente novamente"});
         }
-
         return res.status(200).send(user);
-
     }catch (err){
         if(err.kind == "ObjectId"){
             return res.status(400).send({ message: `ID informado, esta incorreto, tente novamente!`}); 
         }
-
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado tente novamente!`});  
     }
