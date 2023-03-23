@@ -1,6 +1,6 @@
 # pizzaria-nodejs 
 
-<center style="max-width: 500px; margin: auto; align-items: center;">
+<div align="center">
 
 O Código da Pizzaria Ultimato:
 <br>
@@ -14,7 +14,7 @@ Código Desenvolvido Em JavaScript:
 
 ![NodeJS](https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg "NodeJS")
 
- </center>
+ </div>
 
 ## Instalação
 
