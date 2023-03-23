@@ -1,0 +1,56 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Pizzaria",
+        "description": "API de uma Pizzaria contendo vários CRUDS e assuntos",
+        "contact": {
+            "name": "Pedro Lucas",
+            "email": "siqueirafernandes02@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/",
+            "description": "API de teste local"
+        }
+    ],
+    "paths": {
+        "/usuario/findAll": {
+            "get":{
+                "summary": "Lista todos os Usuários da API",
+                "description": "Rota tem como finalidade listar todos os usuários que foram criados ao longo da utilização da API",
+                "tags": ["Usuário"],
+                "responses": {
+                    "200": {
+                        "description": "Ok!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor"
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação"
+                    }
+                }
+            }
+        },
+        "/usuario/find": {
+            "get":{
+                "summary": "Lista o Usuário escolhido na API",
+                "description": "Utiliza um ID para trazer um usuario especifico",
+                "tags": ["Usuário"],
+                "responses": {
+                    "200": {
+                        "description": "Ok!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor"
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ const auth = require('./src/router/auth.router'); // Arquivo de Rota de Auth
 const pedido = require('./src/router/pedido.router'); // Arquivo de Rota de Pedido
 const carrinho = require('./src/router/carrinho.router'); // Arquivo de Rota de Carrinho
 const compra = require('./src/router/compra.router'); // Arquivo de Rota de Compra
+const docs = require('./src/router/docs.router'); // Arquivo de Rota de Docs
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/auth", auth); // Chamando as rotas de Auth
 app.use("/pedido", pedido); // Chamando as rotas de Pedido
 app.use("/carrinho", carrinho); // Chamando as rotas de Carrinho
 app.use("/compra", compra); // Chamando as rotas de Compra
+app.use("/docs", docs); // Chamando as rotas de Docs
 
 
 app.get("/", (req,res) => {
