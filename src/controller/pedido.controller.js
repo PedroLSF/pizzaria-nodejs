@@ -24,7 +24,7 @@ const createPedidoController = async (req, res) =>{
             ...req.body,
             userId: req.userId,
         }
-        res.send(await pedidoService.createPedidoService(corpo));
+        res.status(201).send(await pedidoService.createPedidoService(corpo));
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});
