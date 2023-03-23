@@ -16,9 +16,18 @@ Código Desenvolvido em Javascript
 
 Estamos utilizando Endpoints para realizar diversas atividades dentro da nossa API, segue uma lista:
 
-### Usuario
+* [Métodos de Usuário](/src/controller/usuario.controller.js)
+* [Métodos de Pedido](/src/controller/pedido.controller.js)
+* [Métodos de Compra](/src/controller/compra.controller.js)
+* [Métodos de Carrinho](/src/controller/carrinho.controller.js)
 
-[Métodos de Usuário](/src/controller/usuario.controller.js);
-### Produto
+A nossa API te devovle algumas respostas, elas podem ser:
 
-Todos os endpoints de produto listado abaixo
+| Codigo | resposta                                                      |
+| :------- | --------------------------------------------------------------- |
+| 200    | retorna um usuário válido                                   |
+| 400    | retorna uma mensagem informando o erro                        |
+| 401    | retorna o erro de autenticacao                                |
+| 404    | retorna uma mensagem informando que não encontrou o usuário |
+
+**Material de Estudo, desenvolvido por: [Pedro Lucas](https://github.com/PedroLSF)**
