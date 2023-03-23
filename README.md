@@ -2,7 +2,7 @@
 
 O Código da Pizzaria Ultimato:
 
-![Pizzaria](https://w7.pngwing.com/pngs/613/484/png-transparent-pizza-logo-illustration-pizza-logo-logo-free-logo-design-template-food-label-thumbnail.png "NodeJS")
+![Pizzaria](https://media.istockphoto.com/id/1145383503/pt/vetorial/logo-of-a-sketched-pizza-vector-illustration-on-black-background.jpg?s=170667a&w=0&k=20&c=ZuD2dva7Ry2sglqnxr3JtIUeXANr2f_wuJVSk8MqV74= "NodeJS")
 
 Código Desenvolvido Em JavaScript:
 ![NodeJS](https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg "NodeJS")
