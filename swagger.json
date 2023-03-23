@@ -26,6 +26,22 @@
                 "summary": "Lista todos os Usuários da API",
                 "description": "Rota tem como finalidade listar todos os usuários que foram criados ao longo da utilização da API",
                 "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Ok!",
@@ -74,14 +90,527 @@
                 }
             }
         },
-        "/usuario/find": {
+        "/usuario/find/{id}": {
             "get":{
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "summary": "Lista o Usuário escolhido na API",
                 "description": "Utiliza um ID para trazer um usuario especifico",
                 "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Ok!"
+                        "description": "Retorna o usuario localizado pelo ID",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/create": {
+            "post":{
+                "summary": "Criar um novo Usuario",
+                "description": "Responsável por criar um novo usuário através da informação passada por EndPoint",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Usuario"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Retorna o Objeto Criado no Banco de Dados",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/update/{id}": {
+            "put":{
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Lista o Usuário escolhido na API",
+                "description": "Utiliza um ID para trazer um usuario especifico",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Usuario"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna o Objeto atualizado no Banco de Dados",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/delete/{id}": {
+            "delete":{
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Lista o Usuário escolhido na API",
+                "description": "Utiliza um ID para trazer um usuario especifico",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna o Objeto deletado do Banco de Dados",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/addAdress/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Adiciona o Endereço ao Usuário escolhido na API",
+                "description": "Rota responsável por adicionar enderecos no usuário informado",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/UserAdress"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Retorna um usuário com seu endereco inserido",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/removeAdress/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Remove o Endereço do Usuário escolhido na API",
+                "description": "Rota responsável por remover o endereco do usuário informado",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um usuário com seu endereco removido",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/addPedido/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Adiciona um Pedido Favorito ao Usuário escolhido na API",
+                "description": "Rota responsável por adicionar o pedido favorio ao usuario informado",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Pedido"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Retorna um usuário com seu Pedido Favorido inserido",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/UserAdress"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+
+        },
+        "/usuario/removePedido/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Remove o Pedido Favorito do Usuário escolhido na API",
+                "description": "Rota responsável por remover o Pedido Favorito do usuário informado",
+                "tags": ["Usuário"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um usuário com seu endereco removido",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                    }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
                     }
                 }
             }
@@ -150,6 +679,38 @@
                     },
                     "admin":{
                         "type": "Boolean"
+                    }
+                }
+            },
+            "UserAdress": {
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "rua":{
+                            "type": "String"
+                        },
+                        "numero":{
+                            "type": "String"
+                        },
+                        "complemento":{
+                            "type": "String"
+                        },
+                        "createdAt":{
+                            "type": "String"
+                        }
+                    }
+                }
+            },
+            "Pedido": {
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "_id":{
+                            "type": "String"
+                        },
+                        "createdAt":{
+                            "type": "String"
+                        } 
                     }
                 }
             }
