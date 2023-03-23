@@ -1,6 +1,9 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
+
 const connectToDatabase = require("./src/database/database"); // Conexão com o Banco
+
 const usuario = require('./src/router/usuario.router'); // Arquivo de Rota do Usuário 
 const auth = require('./src/router/auth.router'); // Arquivo de Rota de Auth 
 const pedido = require('./src/router/pedido.router'); // Arquivo de Rota de Pedido
@@ -14,6 +17,12 @@ const app = express();
 const port = 8080;
 
 app.use(express.json());
+app.use(cors(
+    {
+        origin: "localhost:3001",
+        methods: ["GET", "POST", "PUT", "PATCH","DELETE"]
+    }
+));
 
 connectToDatabase(); // Conectando com o Banco
 
