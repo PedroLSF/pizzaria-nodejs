@@ -18,7 +18,7 @@ Estamos utilizando Endpoints para realizar diversas atividades dentro da nossa A
 
 ### Usuario
 
-![Métodos de Usuário](/src/controller/usuario.controller.js);
+[Métodos de Usuário](/src/controller/usuario.controller.js);
 ### Produto
 
 Todos os endpoints de produto listado abaixo
