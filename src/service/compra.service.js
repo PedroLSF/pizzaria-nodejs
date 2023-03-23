@@ -4,8 +4,8 @@ const findCompraByIdService = (id) => {
     return Compra.findById(id);
 };
 
-const findAllCompraService = () => {
-    return Compra.find();
+const findAllCompraService = (limit, offset) => {
+    return Compra.find().limit(limit).skip(offset);
 };
 
 const createCompraService = (body) => {

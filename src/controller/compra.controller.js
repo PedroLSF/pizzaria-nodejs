@@ -11,7 +11,7 @@ const findCompraByIdController = async (req, res) => {
 
 const findAllCompraController = async (req, res) => {
     try{
-        res.status(200).send(await compraService.findAllCompraService());
+        res.status(200).send(await compraService.findAllCompraService(req.query.limit, req.query.offset));
     }catch(err){
         console.log(`Erro: ${err.message}`);
         return res.status(500).send({message: "Erro inesperado, tente novamente"});

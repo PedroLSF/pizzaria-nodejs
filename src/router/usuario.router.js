@@ -4,10 +4,11 @@ const usuarioController = require("../controller/usuario.controller");
 
 const authMiddleware = require("../middleware/auth.midd");
 const {validaUsuario, validaId} = require("../middleware/validacao.midd");
+const paginacao = require("../middleware/paginacao.midd");
 
 // Rotas GET
 router.get('/findById/:id', authMiddleware, validaId, usuarioController.findUserByIdController);
-router.get('/findAll', authMiddleware,usuarioController.findAllUsersController);
+router.get('/findAll', authMiddleware, paginacao, usuarioController.findAllUsersController);
 
 
 // Rotas POST

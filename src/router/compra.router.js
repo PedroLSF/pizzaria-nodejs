@@ -4,9 +4,10 @@ const compraController = require("../controller/compra.controller");
 
 const authMiddleware = require("../middleware/auth.midd");
 const {validaCompra, validaId} = require("../middleware/validacao.midd");
+const paginacao = require("../middleware/paginacao.midd");
 
 router.get("/find/:id", authMiddleware, validaId, compraController.findCompraByIdController);
-router.get("/findAll", authMiddleware, compraController.findAllCompraController);
+router.get("/findAll", authMiddleware, paginacao, compraController.findAllCompraController);
 
 router.post("/create", authMiddleware, validaCompra, compraController.createCompraController);
 

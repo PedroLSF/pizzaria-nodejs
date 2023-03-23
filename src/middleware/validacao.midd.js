@@ -94,10 +94,32 @@ const validaId = (req, res, next) => {
     }
 }
 
+const validaLogin = (req, res, next) => {
+    let erros = []; // Variavel com os Erros
+    if(!req.body.email){
+        erros.push("Email");
+    }
+    if(!req.body.senha){
+        erros.push("Senha");
+    }
+
+    // Testa se existe o Erro e caso tenha, escolhe se é 1 ou mais erros
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length == 1 > 1){
+            return res.status(400).send({message: `Campos ${erros} precisam ser preenchidos`});
+        }else{
+            return res.status(400).send({message: `Campo ${erros} precisa ser preenchido`});
+        }
+    }
+}
+
 module.exports = {
     validaUsuario,
     validaPedido,
     validaCompra,
     validaCarrinho,
-    validaId
+    validaId,
+    validaLogin
 }
