@@ -12,7 +12,7 @@ Código Desenvolvido Em JavaScript:
 <br>
 <br>
 
-![NodeJS](https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg "NodeJS")
+<!-- ![NodeJS](https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg "NodeJS") -->
 
  </center>
 
