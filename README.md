@@ -1,4 +1,4 @@
-# pizzaria-nodejs 
+# Pizzaria Ultimato - Desenvolvida com NodeJS
 
 <div align="center">
 
