@@ -18,18 +18,58 @@
     "paths": {
         "/usuario/findAll": {
             "get":{
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "summary": "Lista todos os Usuários da API",
                 "description": "Rota tem como finalidade listar todos os usuários que foram criados ao longo da utilização da API",
                 "tags": ["Usuário"],
                 "responses": {
                     "200": {
-                        "description": "Ok!"
+                        "description": "Ok!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+                            } 
+                        }
                     },
                     "500": {
-                        "description": "Internal Server Error: Erro no Servidor"
+                        "description": "Internal Server Error: Erro no Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
                     },
                     "401": {
-                        "description": "Unauthorized: Erro de Autenticação"
+                        "description": "Unauthorized: Erro de Autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "String"
+                                        }
+                                    }
+                                }
+                            } 
+                        }
                     }
                 }
             }
@@ -42,12 +82,74 @@
                 "responses": {
                     "200": {
                         "description": "Ok!"
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "Usuario": {
+                "type": "object",
+                "properties": {
+                    "nome":{
+                        "type": "String"
                     },
-                    "500": {
-                        "description": "Internal Server Error: Erro no Servidor"
+                    "numero":{
+                        "type": "String"
                     },
-                    "401": {
-                        "description": "Unauthorized: Erro de Autenticação"
+                    "email":{
+                        "type": "String"
+                    },
+                    "senha":{
+                        "type": "String"
+                    },
+                    "endereco":{
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "rua":{
+                                    "type": "String"
+                                },
+                                "numero":{
+                                    "type": "String"
+                                },
+                                "complemento":{
+                                    "type": "String"
+                                },
+                                "createdAt":{
+                                    "type": "String"
+                                }
+                            }
+                        }
+                    },
+                    "pedido": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id":{
+                                    "type": "String"
+                                },
+                                "createdAt":{
+                                    "type": "String"
+                                } 
+                            }
+                        }
+                    },
+                    "createdAt": {
+                        "createdAt":{
+                            "type": "String"
+                        }
+                    },
+                    "admin":{
+                        "type": "Boolean"
                     }
                 }
             }
