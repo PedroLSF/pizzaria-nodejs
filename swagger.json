@@ -90,7 +90,7 @@
                 }
             }
         },
-        "/usuario/find/{id}": {
+        "/usuario/findById/{id}": {
             "get":{
                 "security": [
                     {
@@ -102,10 +102,10 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -160,16 +160,17 @@
                 "summary": "Criar um novo Usuario",
                 "description": "Responsável por criar um novo usuário através da informação passada por EndPoint",
                 "tags": ["Usuário"],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Usuario"
-                        },
-                        "name": "body" 
-                    }
-                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "201": {
                         "description": "Retorna o Objeto Criado no Banco de Dados",
@@ -212,22 +213,25 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Usuario"
-                        },
-                        "name": "body" 
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o Objeto atualizado no Banco de Dados",
@@ -273,7 +277,7 @@
                 }
             }
         },
-        "/usuario/delete/{id}": {
+        "/usuario/remove/{id}": {
             "delete":{
                 "security": [
                     {
@@ -285,10 +289,10 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -350,22 +354,25 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/UserAdress"
-                        },
-                        "name": "body" 
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/UserAdress"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "201": {
                         "description": "Retorna um usuário com seu endereco inserido",
@@ -411,7 +418,7 @@
                 }
             }
         },
-        "/usuario/removeAdress/{id}": {
+        "/usuario/removeAdress": {
             "delete": {
                 "security": [
                     {
@@ -421,16 +428,24 @@
                 "summary": "Remove o Endereço do Usuário escolhido na API",
                 "description": "Rota responsável por remover o endereco do usuário informado",
                 "tags": ["Usuário"],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "name": "id"
-                    }
-                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "String"
+                                    },
+                                    "adressId": {
+                                        "type": "String"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna um usuário com seu endereco removido",
@@ -488,22 +503,25 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Pedido"
-                        },
-                        "name": "body" 
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Pedido"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "201": {
                         "description": "Retorna um usuário com seu Pedido Favorido inserido",
@@ -511,7 +529,7 @@
                             "application/json": {
                                 "schema": {
                                     "type": "object",
-                                    "$ref": "#/components/schemas/UserAdress"
+                                    "$ref": "#/components/schemas/Usuario"
                                     }
                             }
                         }
@@ -562,14 +580,29 @@
                 "tags": ["Usuário"],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "_id": {
+                                        "type": "String"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna um usuário com seu endereco removido",

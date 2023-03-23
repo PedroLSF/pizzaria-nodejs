@@ -34,19 +34,6 @@ const findAllUsersController = async (req, res) => {
 const createUserController = async (req, res) => {
     try{
         const body = req.body;
-        if(!body.nome){
-            return res.status(400).send({message: "Campo nome precisa ser preenchido"})
-        }
-        if(!body.numero){
-            return res.status(400).send({message: "Campo numero precisa ser preenchido"})
-        }
-        // if(!body.endereco){
-        //     return res.status(400).send({message: "Campo endereco precisa ser preenchido"})
-        // }
-        // if(!body.pedido){
-        //     return res.status(400).send({message: "Campo pedido precisa ser preenchido"})
-        // }
-
         return res.status(201).send(await userService.createUserService(body)); 
 
     }catch(err){
