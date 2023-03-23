@@ -1,3 +1,5 @@
+const ObjectId = require("mongoose").Types.ObjectId;
+
 const validaUsuario = (req, res, next) => {
     if(!req.body.nome){
         return res.status(400).send({message: "Campo nome precisa ser preenchido"})
@@ -84,9 +86,18 @@ const validaCarrinho = (req, res, next) => {
     }
 }
 
+const validaId = (req, res, next) => {
+    if(ObjectId.isValid(req.params.id)){
+        return next();
+    }else{
+        return res.status(400).send({message: `O ID não corresponde ao formato correto`});
+    }
+}
+
 module.exports = {
     validaUsuario,
     validaPedido,
     validaCompra,
-    validaCarrinho
+    validaCarrinho,
+    validaId
 }
