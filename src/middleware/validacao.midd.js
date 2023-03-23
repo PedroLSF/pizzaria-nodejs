@@ -45,7 +45,48 @@ const validaPedido = (req, res, next) => {
     }
 }
 
+const validaCompra = (req, res, next) => {
+    let erros = []; // Variavel com os Erros
+    if(!req.body.precoTotal){
+        erros.push("Preco Total");
+    }
+    if(req.body.concluido == undefined){
+        erros.push("Concluido");
+    }
+
+    // Testa se existe o Erro e caso tenha, escolhe se é 1 ou mais erros
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length == 1 > 1){
+            return res.status(400).send({message: `Campos ${erros} precisam ser preenchidos`});
+        }else{
+            return res.status(400).send({message: `Campo ${erros} precisa ser preenchido`});
+        }
+    }
+}
+
+const validaCarrinho = (req, res, next) => {
+    let erros = []; // Variavel com os Erros
+    if(!req.body.precoTotal){
+        erros.push("Preco Total");
+    }
+
+    // Testa se existe o Erro e caso tenha, escolhe se é 1 ou mais erros
+    if(erros.length == 0){
+        return next();
+    }else{
+        if(erros.length == 1 > 1){
+            return res.status(400).send({message: `Campos ${erros} precisam ser preenchidos`});
+        }else{
+            return res.status(400).send({message: `Campo ${erros} precisa ser preenchido`});
+        }
+    }
+}
+
 module.exports = {
     validaUsuario,
-    validaPedido
+    validaPedido,
+    validaCompra,
+    validaCarrinho
 }
