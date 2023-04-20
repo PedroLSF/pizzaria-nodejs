@@ -6,7 +6,7 @@ const UsuarioSchema = new mongoose.Schema({
     nome: {type: String, required: true},
     numero: {type: String, unique: true, required: true},
     email: {type: String, unique: true, required: true},
-    senha: {type: String, unique: true, required: true},
+    senha: {type: String, required: true},
     endereco: [
         {
             rua: {type: String, required: true},
@@ -17,12 +17,12 @@ const UsuarioSchema = new mongoose.Schema({
     ],
     pedido: [
         {   
-            _id: {type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "pedidos"},
+            _id: {type: mongoose.Schema.Types.ObjectId, ref: "pedidos"},
             createAt: {type: Date, required: true, default: Date.now()}
         }
     ],
     createAt: {type: Date, required: true, default: Date.now()},
-    admin: {type: Boolean, require: true, defaul: false}
+    admin: {type: Boolean, require: true, default: false}
 });
 
 UsuarioSchema.pre("save", async function(next) {

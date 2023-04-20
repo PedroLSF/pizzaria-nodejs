@@ -13,10 +13,6 @@ const validaUsuario = (req, res, next) => {
     if(!req.body.senha){
         return res.status(400).send({message: "Campo senha precisa ser preenchido"})
     }
-    if(req.body.admin == undefined){
-        return res.status(400).send({message: "Campo admin precisa ser preenchido"});
-    }
-
     return next();
 }
 
@@ -50,9 +46,6 @@ const validaPedido = (req, res, next) => {
     }
     if(!req.body.imagem){
         erros.push("Imagem");
-    }
-    if(!req.body.bebida){
-        erros.push("Bebida");
     }
     if(!req.body.valor){
         erros.push("Valor");

@@ -12,7 +12,7 @@ router.get('/findAll', authMiddleware, paginacao, usuarioController.findAllUsers
 
 
 // Rotas POST
-router.post('/create', authMiddleware, validaUsuario, usuarioController.createUserController);
+router.post('/create', validaUsuario, usuarioController.createUserController);
 router.post('/addAdress/:id', authMiddleware, validaId, validaEndereco, usuarioController.addAdressUserController);
 router.post('/addPedido/:id', authMiddleware, validaId, valida_IdBody, usuarioController.addPedidoUserController);
 

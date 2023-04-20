@@ -6,6 +6,8 @@ const loginController = async (req, res) => {
 
     const user = await authService.loginService(email);
 
+    const id = user.id;
+
     if(!user){
         return res.status(400).send({message: "Usuario não encontrado"});
     }
@@ -20,6 +22,7 @@ const loginController = async (req, res) => {
 
     res.status(200).send({
         email,
+        id,
         token
     });
 }
